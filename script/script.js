@@ -8,18 +8,19 @@
 let testo = document.getElementById("testo");
 let km = parseInt(prompt('inserire km da percorrere: '));
 let eta = parseInt(prompt('inserire età: '));
+let flag = true;
 
-if(isNaN(km) || isNaN(eta) || km <=0 || eta < 0){
+if(isNaN(km) || isNaN(eta) || km <=0 || eta < 0 || eta > 130 || km > 22000){
     testo.innerHTML = "INSERIRE VALORE VALIDO (NUMERI INTERI POSITIVI)";
+    flag=false;
     setTimeout(function() {
         location.reload();
     }, 2000);
 }
 
 let totale = km*0.21;
-console.log(totale);
 
 if(eta < 18) totale *= 0.8;
 else if(eta > 65) totale *= 0.6;
 
-testo.innerHTML = "PREZZO CALCOLATO: " + totale.toFixed(2) + "€";
+if(flag) testo.innerHTML = "PREZZO CALCOLATO: " + totale.toFixed(2) + "€";
